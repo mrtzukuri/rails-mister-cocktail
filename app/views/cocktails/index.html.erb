@@ -1,0 +1,15 @@
+<% @ingredients = Ingredient.all %>
+<div class="contained">
+  <% @cocktails.each_with_index do |cocktail| %>
+    <div class="card-trip">
+      <%= link_to cocktail_path(cocktail), class: "card-image" do %>
+      <img src="https://source.unsplash.com/1600x900/?cocktail,<%= @ingredients.sample.name  %>"/>
+      <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+        </div>
+      </div>
+      </div>
+  <% end %>
+</div>
