@@ -2,7 +2,22 @@
 <div class="contained">
   <% @cocktails.each_with_index do |cocktail| %>
 
-      <div class="card-trip">
+    <div class="card-cocktail">
+      <%= link_to cocktail_path(cocktail) do %>
+
+        <% if cocktail[:photo].nil?  %>
+          <div class="cocktail-image" style="background-image: url(https://source.unsplash.com/1600x900/?cocktail,<%= @ingredients.sample.name.gsub(" ", "%20")  %>)">
+            <h2><%= cocktail.name %></h2>
+          </div>
+        <% else %>
+          <div class="cocktail-image" style="background-image: url('<%= cl_image_path cocktail.photo %>')">
+            <h2><%= cocktail.name %></h2>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+<!--       <div class="card-trip">
         <%= link_to cocktail_path(cocktail) do %>
 
           <% if cocktail[:photo].nil?  %>
@@ -18,7 +33,7 @@
           </div>
         </div>
 
-      </div>
+      </div> -->
 
   <% end %>
 </div>
